@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 "use client";
 
 import { useState } from "react";
@@ -101,8 +103,7 @@ export default function OnboardingPage() {
                 (option) => (
                   <Button
                     key={option}
-                    variant={data.goal === option ? "default" : "outline"}
-                    className={`w-full justify-start ${data.goal === option ? "bg-white text-black" : "border-gray-600 text-white hover:bg-gray-800"}`}
+                    className={`w-full justify-start ${data.goal === option ? "bg-white text-black" : "border-gray-600 text-white hover:bg-gray-800 bg-transparent"}`}
                     onClick={() => setData({ ...data, goal: option })}
                   >
                     {option}
@@ -159,8 +160,7 @@ export default function OnboardingPage() {
               {["Beginner", "Intermediate", "Expert"].map((option) => (
                 <Button
                   key={option}
-                  variant={data.experience === option ? "default" : "outline"}
-                  className={`w-full justify-start ${data.experience === option ? "bg-white text-black" : "border-gray-600 text-white hover:bg-gray-800"}`}
+                  className={`w-full justify-start ${data.experience === option ? "bg-white text-black" : "border-gray-600 text-white hover:bg-gray-800 bg-transparent"}`}
                   onClick={() => setData({ ...data, experience: option })}
                 >
                   {option}
@@ -222,8 +222,7 @@ export default function OnboardingPage() {
             <CardContent className="space-y-4">
               <div className="space-y-4">
                 <Button
-                  variant={data.dataType === "resume" ? "default" : "outline"}
-                  className={`w-full justify-start ${data.dataType === "resume" ? "bg-white text-black" : "border-gray-600 text-white hover:bg-gray-800"}`}
+                  className={`w-full justify-start ${data.dataType === "resume" ? "bg-white text-black" : "border-gray-600 text-white hover:bg-gray-800 bg-transparent"}`}
                   onClick={() => setData({ ...data, dataType: "resume" })}
                 >
                   <FileText className="mr-2 w-4 h-4" />
@@ -231,8 +230,7 @@ export default function OnboardingPage() {
                 </Button>
 
                 <Button
-                  variant={data.dataType === "linkedin" ? "default" : "outline"}
-                  className={`w-full justify-start ${data.dataType === "linkedin" ? "bg-white text-black" : "border-gray-600 text-white hover:bg-gray-800"}`}
+                  className={`w-full justify-start ${data.dataType === "linkedin" ? "bg-white text-black" : "border-gray-600 text-white hover:bg-gray-800 bg-transparent"}`}
                   onClick={() => setData({ ...data, dataType: "linkedin" })}
                 >
                   <Linkedin className="mr-2 w-4 h-4" />
@@ -338,8 +336,7 @@ export default function OnboardingPage() {
           <Button
             onClick={handleBack}
             disabled={step === 1}
-            variant="outline"
-            className="border-gray-600 text-white hover:bg-gray-800"
+            className="border-gray-600 text-white hover:bg-gray-800 bg-transparent"
           >
             <ArrowLeft className="mr-2 w-4 h-4" />
             Back
