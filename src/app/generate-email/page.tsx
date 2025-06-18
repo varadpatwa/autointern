@@ -40,7 +40,6 @@ export default function GenerateEmailPage() {
   const [isSending, setIsSending] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
-  const supabase = createClient();
 
   const handleGenerateEmail = async () => {
     if (!data.inputContent || !data.targetCompany || !data.position) {

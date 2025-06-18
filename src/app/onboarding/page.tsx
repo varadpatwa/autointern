@@ -52,7 +52,6 @@ export default function OnboardingPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [generatedEmail, setGeneratedEmail] = useState("");
   const router = useRouter();
-  const supabase = createClient();
 
   const handleNext = () => {
     if (step < 6) setStep(step + 1);

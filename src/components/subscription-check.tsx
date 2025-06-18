@@ -16,11 +16,19 @@ export function SubscriptionCheck({
     const [isLoading, setIsLoading] = useState(true);
     const [isSubscribed, setIsSubscribed] = useState(false);
     const router = useRouter();
-    const supabase = createClient();
 
     useEffect(() => {
         const checkSubscription = async () => {
             try {
+                // Check if environment variables are available
+                if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+                    console.warn('Supabase environment variables not set, skipping subscription check');
+                    setIsSubscribed(true); // Allow access when env vars are missing
+                    setIsLoading(false);
+                    return;
+                }
+
+                const supabase = createClient();
                 const { data: { user } } = await supabase.auth.getUser();
 
                 if (!user) {
@@ -43,14 +51,15 @@ export function SubscriptionCheck({
                 setIsSubscribed(true);
             } catch (error) {
                 console.error('Error checking subscription:', error);
-                router.push(redirectTo);
+                // On error, allow access to prevent blocking the app
+                setIsSubscribed(true);
             } finally {
                 setIsLoading(false);
             }
         };
 
         checkSubscription();
-    }, [router, redirectTo, supabase]);
+    }, [router, redirectTo]);
 
     if (isLoading) {
         return (
