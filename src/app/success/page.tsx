@@ -42,8 +42,7 @@ export default function SuccessPage() {
               </Button>
               <Button
                 asChild
-                variant="outline"
-                className="border-gray-600 text-white hover:bg-gray-800"
+                className="border-gray-600 text-white hover:bg-gray-800 bg-transparent"
               >
                 <Link href="/dashboard">View Dashboard</Link>
               </Button>

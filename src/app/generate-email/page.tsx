@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 "use client";
 
 import { useState } from "react";
@@ -135,23 +137,15 @@ export default function GenerateEmailPage() {
                   <Label className="text-white">Information Source</Label>
                   <div className="flex gap-4">
                     <Button
-                      variant={
-                        data.inputType === "resume" ? "default" : "outline"
-                      }
-                      className={`flex-1 ${data.inputType === "resume" ? "bg-white text-black" : "border-gray-600 text-white hover:bg-gray-800"}`}
                       onClick={() => setData({ ...data, inputType: "resume" })}
+                      className={`flex-1 ${data.inputType === "resume" ? "bg-white text-black" : "border-gray-600 text-white hover:bg-gray-800"}`}
                     >
                       <FileText className="mr-2 w-4 h-4" />
                       Resume Text
                     </Button>
                     <Button
-                      variant={
-                        data.inputType === "linkedin" ? "default" : "outline"
-                      }
+                      onClick={() => setData({ ...data, inputType: "linkedin" })}
                       className={`flex-1 ${data.inputType === "linkedin" ? "bg-white text-black" : "border-gray-600 text-white hover:bg-gray-800"}`}
-                      onClick={() =>
-                        setData({ ...data, inputType: "linkedin" })
-                      }
                     >
                       <Linkedin className="mr-2 w-4 h-4" />
                       LinkedIn URL
@@ -268,8 +262,7 @@ export default function GenerateEmailPage() {
                     <Button
                       onClick={handleGenerateEmail}
                       disabled={isGenerating}
-                      variant="outline"
-                      className="border-gray-600 text-white hover:bg-gray-800"
+                      className="border-gray-600 text-white hover:bg-gray-800 bg-transparent"
                     >
                       {isGenerating ? (
                         <Loader2 className="mr-2 w-4 h-4 animate-spin" />
