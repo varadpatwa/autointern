@@ -35,8 +35,8 @@ export const signUpAction = async (formData: FormData) => {
 
   if (user) {
     try {
-
-      const { error: updateError } = await supabase
+      // Try to create user profile manually as fallback
+      const { error: insertError } = await supabase
         .from('users')
         .insert({
           id: user.id,
@@ -47,21 +47,14 @@ export const signUpAction = async (formData: FormData) => {
           created_at: new Date().toISOString()
         });
 
-      if (updateError) {
-        // Error handling without console.error
-        return encodedRedirect(
-          "error",
-          "/sign-up",
-          "Error updating user. Please try again.",
-        );
+      if (insertError) {
+        console.error('User profile creation error:', insertError);
+        // Don't fail the signup if profile creation fails
+        // The user can still sign in and we can handle this later
       }
     } catch (err) {
-      // Error handling without console.error
-      return encodedRedirect(
-        "error",
-        "/sign-up",
-        "Error updating user. Please try again.",
-      );
+      console.error('Error creating user profile:', err);
+      // Don't fail the signup if profile creation fails
     }
   }
 
