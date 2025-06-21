@@ -33,30 +33,8 @@ export const signUpAction = async (formData: FormData) => {
     return encodedRedirect("error", "/sign-up", error.message);
   }
 
-  if (user) {
-    try {
-      // Try to create user profile manually as fallback
-      const { error: insertError } = await supabase
-        .from('users')
-        .insert({
-          id: user.id,
-          user_id: user.id,
-          name: fullName,
-          email: email,
-          token_identifier: user.id,
-          created_at: new Date().toISOString()
-        });
-
-      if (insertError) {
-        console.error('User profile creation error:', insertError);
-        // Don't fail the signup if profile creation fails
-        // The user can still sign in and we can handle this later
-      }
-    } catch (err) {
-      console.error('Error creating user profile:', err);
-      // Don't fail the signup if profile creation fails
-    }
-  }
+  // The database trigger will automatically create the user profile
+  // No need for manual insertion here
 
   return encodedRedirect(
     "success",
