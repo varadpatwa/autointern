@@ -1,6 +1,6 @@
-export const dynamic = "force-dynamic";
-
 "use client";
+
+export const dynamic = "force-dynamic";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -40,7 +40,6 @@ export default function GenerateEmailPage() {
   const [isSending, setIsSending] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
-  const supabase = createClient();
 
   const handleGenerateEmail = async () => {
     if (!data.inputContent || !data.targetCompany || !data.position) {
