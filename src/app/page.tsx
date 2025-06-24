@@ -168,8 +168,7 @@ export default function Home() {
             <Link href="/pricing">
               <Button
                 size="lg"
-                variant="outline"
-                className="border-gray-600 text-white hover:bg-gray-800 text-lg px-8 py-4"
+                className="bg-white text-black hover:bg-gray-200 text-lg px-8 py-4"
               >
                 View Pricing
               </Button>

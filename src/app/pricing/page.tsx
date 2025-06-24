@@ -26,18 +26,10 @@ export default async function Pricing() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-          {plans?.map((item: any) => (
-            <PricingCard key={item.id} item={item} user={user} />
-          ))}
-        </div>
-
-        {/* Features Comparison */}
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            What's Included
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
+          {/* $0/month column */}
+          <div>
+            <PricingCard item={plans?.find((p: any) => p.amount === 0)} user={user} />
+            <div className="bg-gray-900 p-6 rounded-b-lg border border-t-0 border-gray-800 -mt-2">
               <h3 className="text-xl font-semibold mb-4">All Plans Include</h3>
               <ul className="space-y-3">
                 <li className="flex items-center gap-3">
@@ -58,8 +50,11 @@ export default async function Pricing() {
                 </li>
               </ul>
             </div>
-
-            <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
+          </div>
+          {/* $14.99/month column */}
+          <div>
+            <PricingCard item={plans?.find((p: any) => p.amount === 1499)} user={user} />
+            <div className="bg-gray-900 p-6 rounded-b-lg border border-t-0 border-gray-800 -mt-2">
               <h3 className="text-xl font-semibold mb-4">Premium Features</h3>
               <ul className="space-y-3">
                 <li className="flex items-center gap-3">
@@ -80,8 +75,11 @@ export default async function Pricing() {
                 </li>
               </ul>
             </div>
-
-            <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
+          </div>
+          {/* $28.99/month column */}
+          <div>
+            <PricingCard item={plans?.find((p: any) => p.amount === 2899)} user={user} />
+            <div className="bg-gray-900 p-6 rounded-b-lg border border-t-0 border-gray-800 -mt-2">
               <h3 className="text-xl font-semibold mb-4">Pro Features</h3>
               <ul className="space-y-3">
                 <li className="flex items-center gap-3">
