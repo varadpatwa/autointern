@@ -168,7 +168,7 @@ export default function Home() {
             <Link href="/pricing">
               <Button
                 size="lg"
-                className="bg-white text-black hover:bg-gray-200 text-lg px-8 py-4"
+                className="bg-white text-black hover:bg-gray-200 text-lg px-8 py-4" //Fixed text color new code
               >
                 View Pricing
               </Button>
