@@ -33,7 +33,7 @@ export default function PricingCard({
           body: {
             price_id: priceId,
             user_id: user.id,
-            return_url: `${window.location.origin}/dashboard`,
+            return_url: `${window.location.origin}/onboarding`,
           },
           headers: {
             "X-Customer-Email": user.email || "",
